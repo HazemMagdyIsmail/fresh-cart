@@ -22,3 +22,17 @@
     button {
   cursor: pointer;
 }
+@keyframes mobile-menu {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-mobile-menu {
+  animation: mobile-menu 1s ease forwards;
+}

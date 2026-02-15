@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { useSession, signOut } from "next-auth/react"
-import { useContext, useState } from "react"
-import { WishlistContext } from "@/context/WIshlistContext"
-import { CartContext } from "@/context/CartContext"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+import { useContext, useState } from "react";
+import { WishlistContext } from "@/context/WIshlistContext";
+import { CartContext } from "@/context/CartContext";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
-  const { data: session } = useSession()
-  const { wishlistIds } = useContext(WishlistContext)!
-  const { CartCount } = useContext(CartContext)!
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false)
+  const { data: session } = useSession();
+  const { wishlistIds } = useContext(WishlistContext)!;
+  const { CartCount } = useContext(CartContext)!;
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
-  const wishlistCount = wishlistIds.length
+  const wishlistCount = wishlistIds.length;
 
   return (
-    <nav className="border-b bg-white fixed top-0 left-0 right-0 z-50 shadow">
-      <div className="container mx-auto flex items-center justify-between px-6 py-3">
+    <nav className="border-b bg-white fixed top-0 left-0 right-0 z-50 shadow ">
+      <div className="container mx-auto flex items-center justify-between px-6 py-3   w-[90%]">
         {/* Left */}
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
@@ -34,7 +34,11 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-6 text-gray-700 font-medium relative">
-            <li><Link href="/" className="hover:text-emerald-600">Home</Link></li>
+            <li>
+              <Link href="/" className="hover:text-emerald-600">
+                Home
+              </Link>
+            </li>
             <li className="relative">
               <Link href="/cart" className="hover:text-emerald-600">
                 Cart
@@ -45,12 +49,33 @@ export default function Navbar() {
                 )}
               </Link>
             </li>
-            <li><Link href="/products" className="hover:text-emerald-600">Products</Link></li>
-            <li><Link href="/categories" className="hover:text-emerald-600">Categories</Link></li>
-            <li><Link href="/brands" className="hover:text-emerald-600">Brands</Link></li>
-            {session &&(<li><Link href="/allorders" className="hover:text-emerald-600">Orders</Link></li>)}
+            <li>
+              <Link href="/products" className="hover:text-emerald-600">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link href="/categories" className="hover:text-emerald-600">
+                Categories
+              </Link>
+            </li>
+            <li>
+              <Link href="/brands" className="hover:text-emerald-600">
+                Brands
+              </Link>
+            </li>
+            {session && (
+              <li>
+                <Link href="/allorders" className="hover:text-emerald-600">
+                  Orders
+                </Link>
+              </li>
+            )}
             <li className="relative">
-              <Link href="/wishlist" className="inline-block relative hover:text-emerald-600">
+              <Link
+                href="/wishlist"
+                className="inline-block relative hover:text-emerald-600"
+              >
                 <i className="fa-solid fa-heart text-lg text-red-600"></i>
                 {wishlistCount > 0 && (
                   <span className="absolute top-0 left-full -ml-2 -mt-2 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
@@ -64,8 +89,6 @@ export default function Navbar() {
 
         {/* Right */}
         <div className="flex items-center gap-5 text-lg">
-
-
           {/* Auth / Account */}
           {session ? (
             <div className="relative">
@@ -73,7 +96,8 @@ export default function Navbar() {
                 onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
                 className="text-sm font-medium hover:text-emerald-600"
               >
-                {session.user?.name || "Account"} <i className="fa-solid fa-caret-down ml-1"></i>
+                {session.user?.name || "Account"}{" "}
+                <i className="fa-solid fa-caret-down ml-1"></i>
               </Button>
 
               {accountDropdownOpen && (
@@ -96,8 +120,18 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="text-sm font-medium hover:text-emerald-600">Login</Link>
-              <Link href="/register" className="text-sm font-medium hover:text-emerald-600">Register</Link>
+              <Link
+                href="/login"
+                className="text-sm font-medium hover:text-emerald-600"
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="text-sm font-medium hover:text-emerald-600"
+              >
+                Register
+              </Link>
             </>
           )}
 
@@ -111,40 +145,68 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-     {mobileMenuOpen && (
-  <div className="md:hidden px-6 pb-4 ">
-    <ul className="flex flex-col gap-4 text-gray-700 font-medium px-20">
-      <li><Link href="/" className="hover:text-emerald-600 ">Home</Link></li>
-      <li className="">
-              <Link href="/cart" className="hover:text-emerald-600 relative">
-                Cart
-                {CartCount > 0 && (
-                  <span className="absolute top-0 left-full -ml-2 -mt-2 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                    {CartCount}
-                  </span>
-                )}
-              </Link>
-            </li>
-          <li><Link href="/products" className="hover:text-emerald-600">Products</Link></li>
-            <li><Link href="/categories" className="hover:text-emerald-600">Categories</Link></li>
-            <li><Link href="/brands" className="hover:text-emerald-600">Brands</Link></li>
-            {session &&(<li><Link href="/allorders" className="hover:text-emerald-600">Orders</Link></li>)}
-      
-     <li className="absolute top-24.5 left-50">
-              <Link href="/wishlist" className="inline-block relative hover:text-emerald-600">
-                <i className="fa-solid fa-heart text-lg text-red-600"></i>
-                {wishlistCount > 0 && (
-                  <span className="absolute top-0 left-full -ml-2 -mt-2 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                    {wishlistCount}
-                  </span>
-                )}
-              </Link>
-            </li>
+{/* Mobile Menu */}
+{mobileMenuOpen && (
+  <div
+    className="md:hidden px-6 pb-4 
+               transition-all duration-100 ease-in-out
+               transform scale-95 opacity-0
+               animate-mobile-menu"
+  >
+    <ul className="flex flex-col gap-4 text-gray-700 font-medium px-10">
+      <li>
+        <Link href="/" className="hover:text-emerald-600 ">
+          Home
+        </Link>
+      </li>
+      <li className="flex flex-wrap gap-16">
+        <Link href="/cart" className="hover:text-emerald-600 relative">
+          Cart
+          {CartCount > 0 && (
+            <span className="absolute top-0 left-full -ml-2 -mt-2 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+              {CartCount}
+            </span>
+          )}
+        </Link>
+
+        <Link
+          href="/wishlist"
+          className="inline-block relative hover:text-emerald-600"
+        >
+          <i className="fa-solid fa-heart text-lg text-red-600"></i>
+          {wishlistCount > 0 && (
+            <span className="absolute top-0 left-full -ml-2 -mt-2 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+              {wishlistCount}
+            </span>
+          )}
+        </Link>
+      </li>
+      <li>
+        <Link href="/products" className="hover:text-emerald-600">
+          Products
+        </Link>
+      </li>
+      <li>
+        <Link href="/categories" className="hover:text-emerald-600">
+          Categories
+        </Link>
+      </li>
+      <li>
+        <Link href="/brands" className="hover:text-emerald-600">
+          Brands
+        </Link>
+      </li>
+      {session && (
+        <li>
+          <Link href="/allorders" className="hover:text-emerald-600">
+            Orders
+          </Link>
+        </li>
+      )}
     </ul>
   </div>
 )}
 
     </nav>
-  )
+  );
 }

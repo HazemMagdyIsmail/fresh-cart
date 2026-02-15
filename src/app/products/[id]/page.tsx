@@ -23,7 +23,7 @@ export default async function ProductDetails({
     (p: Product) => p.id !== product.id
   );
  return (
-    <div className="container w-[80%] mx-auto mt-10">
+    <div className="container w-[90%] mx-auto mt-10">
       {/* MAIN PRODUCT DETAILS */}
       <div className="flex flex-wrap lg:flex-nowrap lg:items-center">
         <div className="w-full lg:w-1/4">

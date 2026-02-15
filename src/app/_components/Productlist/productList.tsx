@@ -7,7 +7,7 @@ export default async function ProductList() {
  
   return (
     
-    <div className='container w-[80%] mx-auto'>
+    <div className='container w-[90%] mx-auto'>
       
 
       <div className='flex flex-wrap'>

@@ -28,7 +28,7 @@ export default async function OrdersPage() {
 orders = orders.reverse();
   if (orders.length === 0) return <p className="text-center mt-10">No orders found.</p>;
 
-  return (<div className="max-w-6xl mx-auto p-6 w-[80%]">
+  return (<div className="max-w-6xl mx-auto p-6 w-[90%]">
   <h1 className="text-3xl font-bold mb-8 pb-4 text-center">My Orders</h1> {/* removed border-b */}
 
   <div className="grid gap-6">
