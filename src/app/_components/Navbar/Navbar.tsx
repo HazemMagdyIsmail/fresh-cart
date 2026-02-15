@@ -182,7 +182,7 @@ export default function Navbar() {
         </Link>
       </li>
       <li>
-        <Link href="/products" className="hover:text-emerald-600">
+        <Link  href="/products" className="hover:text-emerald-600">
           Products
         </Link>
       </li>
