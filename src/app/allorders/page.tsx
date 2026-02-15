@@ -40,7 +40,7 @@ orders = orders.reverse();
         <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
           <div>
             <span className="text-gray-700 font-medium">{order.paymentMethodType.toUpperCase()}</span>
-            <span className="font-bold text-lg ml-4">${order.totalOrderPrice}</span>
+            <span className="font-bold text-lg ml-4">{order.totalOrderPrice}EGP</span>
           </div>
           <span
             className={`px-3 py-1 rounded-full font-semibold text-sm ${
