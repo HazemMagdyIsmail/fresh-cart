@@ -133,7 +133,7 @@ const {  setWishlistIds } = useContext(WishlistContext)!
 
                     {/* Product Price */}
                     <td className="px-2 md:px-6 py-2 md:py-4 font-semibold">
-                      ${prod.price}
+                      {prod.price}EGP
                     </td>
 
                     {/* Actions */}
